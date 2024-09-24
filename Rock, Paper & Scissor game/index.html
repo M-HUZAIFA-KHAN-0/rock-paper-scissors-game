@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper & Scissors game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="main-container">
+
+        <div class="scoreBoard">
+            <div class="scoreBoard-text">
+                <span>ROCK</span>
+                <span>PAPER</span>
+                <span>SCISSORS</span>
+            </div>
+            <div class="scoreBoard-score">
+                <div class="score" id="playerScore">
+                    <span>Player</span>
+                    <h1 id="userScore">0</h1>
+                </div>
+                <div class="score" id="computerScore">
+                    <span>Computer</span>
+                    <h1 id="compScore">0</h1>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="game-container">
+
+            <i><svg fill="#15213B" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" width="256px" height="256px" viewBox="0 0 72.72 72.72"
+                    xml:space="preserve" stroke="#15213B" stroke-width="0.0007272"
+                    transform="matrix(1, 0, 0, 1, 0, 0)rotate(0)">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+                        stroke-width="1.01808"></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <g>
+                            <g>
+                                <path
+                                    d="M72.72,65.686H0L36.36,7.034L72.72,65.686z M5.388,62.686h61.943L36.36,12.727L5.388,62.686z">
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                </svg></i>
+
+            <div class="choices">
+                <div class="choice" id="rock">
+                    <img src="icon-rock.svg" alt="">
+                </div>
+                <div class="choice" id="paper">
+                    <img src="icon-paper.svg" alt="">
+                </div>
+                <div class="choice" id="scissors">
+                    <img src="icon-scissors.svg" alt="">
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="result-container">
+            <div class="forIdentity">
+                <div>Player</div>
+                <div class="user">
+                    <!-- <div class="userChoice" id="result-paper">
+                        <img src="icon-scissors.svg" alt="">
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="result">
+                <h1 id="resultText">YOU WON</h1>
+                <div class="playAgain-btn">PLAY AGAIN</div>
+            </div>
+
+            <div class="forIdentity">
+                <div>Computer</div>
+                <div class="comp">
+                    <!-- <div class="compChoice" id="result-rock">
+                        <img src="icon-rock.svg" alt="">
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="div" id="resetScore">
+            <div class="reset-confirm">
+                <div class="cross">
+                    <h2>RESET SCORE</h2> <i id="cross"> <svg xmlns="http://www.w3.org/2000/svg" height="30" width="25"
+                            viewBox="0 0 384 512">
+                            <path fill="#878787"
+                                d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+                        </svg> </i>
+                </div>
+                <div class="text-reset">Your score is saved, even when you close this website and come back later!
+                    Are you sure you want to reset your score? This cannot be undone.</div>
+                <div class="reset-btn">
+                    <div class="cancel-btn">I changed my mind</div>
+                    <div class="confirm-btn">Do it!</div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="div" id="rulesCross">
+            <div class="reset-confirm">
+                <div class="cross">
+                    <h2>RULE</h2> <i id="cross2"> <svg xmlns="http://www.w3.org/2000/svg" height="30" width="25"
+                            viewBox="0 0 384 512">
+                            <path fill="#878787"
+                                d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 43.5C45.3 29.9 25.1 28.1 11.5 39.4S-3.9 70.9 7.4 84.5L150.3 256 7.4 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 468.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L233.7 256 376.6 84.5z" />
+                        </svg> </i>
+                </div>
+                <div class="rule-img">
+                    <img src="image-rules.258b753f.svg">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="btn-container">
+            <span class="huz">code by Muhammad Huzaifa Khan</span>
+            <span style="display: flex; justify-content: center; gap: 1rem;">
+                <div class="rules" id="rules">RULES</div>
+                <div class="rules" id="reset">RESET SCORE</div>
+            </span>
+        </div>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

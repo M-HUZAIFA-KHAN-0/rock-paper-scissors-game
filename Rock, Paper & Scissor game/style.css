@@ -1,0 +1,819 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    user-select: none;
+    overflow-x: hidden;
+    background-image: url(360_F_107715529_K4ZH2kc4TkoAZdA7W6fM6T8VCyR8AUgL.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.scoreBoard {
+    width: 50%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-top: 2%;
+}
+
+.scoreBoard-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    gap: 2px;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+}
+
+.scoreBoard-score {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.score {
+    width: 150px;
+    height: auto;
+    background-color: aliceblue;
+    text-align: center;
+    color: black;
+    font-size: 1.7rem;
+    border-radius: 8px;
+}
+
+.score span {
+    color: #2A46C0;
+}
+
+.score h1 {
+    color: #3B4363;
+}
+
+
+.game-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin-top: 3.8rem;
+}
+
+.choice {
+    position: absolute;
+    width: 108px;
+    height: 108px;
+    background-color: aliceblue;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.choice:hover {
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 70px #acacac);
+}
+
+.choices:hover>.choice:not(:hover).choice {
+    filter: brightness(0.7) grayscale(0.5) contrast(1.1) blur(1px);
+}
+
+.choice img {
+    position: absolute;
+    object-fit: cover;
+}
+
+.game-container i {
+    position: absolute;
+    z-index: -9;
+}
+
+#rock {
+    border: 1rem solid crimson;
+    right: 7.55rem;
+    top: -1.05rem;
+}
+
+#paper {
+    border: 1rem solid blueviolet;
+    left: -2.7rem;
+    bottom: 1.9rem;
+}
+
+#scissors {
+    border: 1rem solid yellow;
+    right: 0.3rem;
+    bottom: 1.9rem;
+}
+
+.btn-container {
+    width: 100%;
+    display: flex;
+    gap: 0.1rem;
+    justify-content: space-between;
+    margin-right: 2rem;
+    margin-bottom: 0.3rem;
+}
+
+.rules {
+    height: auto;
+    width: auto;
+    padding: 1rem 2.6rem 1rem 2.6rem;
+    font-size: 1.3rem;
+    font-weight: 550;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    border: 3px solid whitesmoke;
+    border-radius: 9px;
+}
+
+.rules:hover {
+    background-color: whitesmoke;
+    color: hsl(237deg, 49%, 28%);
+    text-decoration: underline;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 70px #acacac);
+}
+
+.huz {
+    color: aliceblue;
+    font-size: 0.84rem;
+    margin-top: 2.96rem;
+    margin-left: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+}
+
+.result-container {
+    display: none;
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    gap: 9rem;
+}
+
+.forIdentity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.forIdentity:first-child,
+.forIdentity:last-child {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: whitesmoke;
+    opacity: 0.9;
+}
+
+.user,
+.comp {
+    width: 210px;
+    height: 210px;
+    background-color: #172741;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userChoice,
+.compChoice {
+    width: 210px;
+    height: 210px;
+    background-color: aliceblue;
+    border-radius: 50%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.zoom-out1 {
+    animation: zoom-out 0.5s ease-in-out;
+    -webkit-animation-delay: 0s;
+
+}
+
+.zoom-out2 {
+    animation: zoom-out 0.5s ease-in-out;
+    -webkit-animation-delay: 0s;
+}
+
+.zoom-out3 {
+    animation: zoom-out 0.7s ease-in-out;
+    -webkit-animation-delay: 0s;
+
+}
+
+@keyframes zoom-out {
+    0% {
+        transform: scale(2);
+        opacity: 0;
+    }
+
+    0.750% {
+        transform: scale(1.9);
+        opacity: 0.1;
+    }
+
+    20% {
+        transform: scale(1.8);
+        opacity: 0.2;
+    }
+
+    30% {
+        transform: scale(1.7);
+        opacity: 0.3;
+    }
+
+    40% {
+        transform: scale(1.6);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    60% {
+        transform: scale(1.4);
+        opacity: 0.6;
+    }
+
+    70% {
+        transform: scale(1.3);
+        opacity: 0.7;
+    }
+
+    80% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+
+    90% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.userChoice img,
+.compChoice img {
+    width: 65%;
+}
+
+.result {
+    /* display: flex; */
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+#resultText {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.playAgain-btn {
+    height: auto;
+    width: auto;
+    padding: 1rem 2.6rem 1rem 2.6rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3B4363;
+    border: 3px solid whitesmoke;
+    border-radius: 9px;
+    background-color: whitesmoke;
+}
+
+.playAgain-btn:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    filter: drop-shadow(0px 0px 50px #acacac);
+    background-color: transparent;
+    color: aliceblue;
+}
+
+#result-paper {
+    border: 1.2rem solid blueviolet;
+}
+
+#result-scissors {
+    border: 1.2rem solid yellow;
+}
+
+#result-rock {
+    border: 1.2rem solid crimson;
+
+}
+
+.reset-confirm {
+    /* position: absolute; */
+    width: 34%;
+    height: auto;
+    background-color: whitesmoke;
+    padding: 3rem 1rem 3rem 1rem;
+    border-radius: 9px;
+    z-index: 99;
+}
+
+.reset-confirm h2 {
+    font-size: 1.9rem;
+    padding: 20px;
+    padding-bottom: 0;
+    color: #3B4363;
+}
+
+.rule-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
+.text-reset {
+    font-size: 18px;
+    padding: 20px;
+}
+
+.reset-btn {
+    display: flex;
+    gap: 1rem;
+    justify-content: end;
+    padding: 20px;
+}
+
+.cancel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background-color: #e1e1e1;
+    color: #3B4363;
+    padding: 12px 20px 12px 20px;
+    border: 2px solid #e1e1e1;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+.cancel-btn:hover {
+    text-decoration: underline;
+    background-color: #3B4363;
+    color: #e1e1e1;
+}
+
+.confirm-btn {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    background-color: #d11818;
+    color: whitesmoke;
+    padding: 12px 20px 12px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+
+}
+
+.confirm-btn:hover {
+    text-decoration: underline;
+    background-color: #9c1b1b;
+}
+
+
+.cross {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cross i {
+    position: relative;
+    bottom: 20px;
+    border: 3px solid #e1e1e1;
+    border-radius: 10px;
+    padding: 0.8rem 1rem 0.8rem 1rem;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.cross i:hover {
+    border: 3px solid #d11818;
+    background-color: #d11818;
+}
+
+
+.blur {
+    filter: blur(7px);
+}
+
+.div {
+    position: absolute;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 98;
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+}
+
+
+@media (max-width: 1116px) {
+    .scoreBoard {
+        width: 550px;
+    }
+
+    .reset-btn {
+        padding: 20px 0 20px 0;
+    }
+
+    .reset-confirm {
+        width: 40%;
+    }
+}
+
+@media (max-width: 950px) {
+
+    .userChoice,
+    .compChoice,
+    .user,
+    .comp {
+        width: 180px;
+        height: 180px;
+    }
+
+    #resultText {
+        font-size: 2rem;
+    }
+
+    .playAgain-btn {
+        padding: 0.8rem 1.8rem 0.8rem 1.8rem;
+    }
+
+    .result-container {
+        gap: 7rem;
+    }
+
+    .reset-confirm {
+        width: 46%;
+    }
+
+    .text-reset {
+        font-size: 15px;
+        padding: 18px;
+    }
+
+    .confirm-btn,
+    .cancel-btn {
+        font-size: 18px;
+        padding: 10px 15px 10px 15px;
+    }
+
+    .cross i {
+        padding: 0.5rem 0.7rem 0.5rem 0.7rem;
+    }
+
+    .reset-confirm h2 {
+        font-size: 1.5rem;
+    }
+
+    #result-paper {
+        border: 1.1rem solid blueviolet;
+    }
+
+    #result-scissors {
+        border: 1.1rem solid yellow;
+    }
+
+    #result-rock {
+        border: 1.1rem solid crimson;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .userChoice,
+    .compChoice,
+    .user,
+    .comp {
+        width: 140px;
+        height: 140px;
+    }
+
+    #resultText {
+        font-size: 1.6rem;
+    }
+
+    .playAgain-btn {
+        padding: 0.6rem 1.5rem 0.6rem 1.5rem;
+    }
+
+    .result-container {
+        gap: 3.5rem;
+    }
+
+    #result-paper {
+        border: 0.9rem solid blueviolet;
+    }
+
+    #result-scissors {
+        border: 0.9rem solid yellow;
+    }
+
+    #result-rock {
+        border: 0.9rem solid crimson;
+    }
+}
+
+@media (max-width: 695px) {
+    .btn-container {
+        flex-direction: column-reverse;
+        margin-bottom: 1rem;
+        margin-right: 0;
+    }
+
+    .huz {
+        margin-top: 1rem;
+        margin-left: 0%;
+    }
+
+    .reset-confirm {
+        width: 53%;
+    }
+
+    .text-reset {
+        font-size: 16px;
+        padding: 17px;
+    }
+
+    .confirm-btn,
+    .cancel-btn {
+        font-size: 17px;
+        padding: 8px 12px 7px 12px;
+    }
+
+    .cross i {
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    .reset-confirm h2 {
+        font-size: 1.3rem;
+    }
+
+    #result-paper {
+        border: 0.8rem solid blueviolet;
+    }
+
+    #result-scissors {
+        border: 0.8rem solid yellow;
+    }
+
+    #result-rock {
+        border: 0.8rem solid crimson;
+    }
+}
+
+@media (max-width: 590px) {
+
+    .userChoice,
+    .compChoice,
+    .user,
+    .comp {
+        width: 110px;
+        height: 110px;
+    }
+
+    #resultText {
+        font-size: 1.5rem;
+    }
+
+    .playAgain-btn {
+        padding: 0.3rem 1.1rem 0.3rem 1.1rem;
+        font-size: 1rem;
+    }
+
+    .result-container {
+        gap: 2rem;
+    }
+
+    .scoreBoard {
+        width: 88%;
+    }
+
+    .score {
+        width: 105px;
+    }
+
+    .scoreBoard-score {
+        gap: 1.2rem;
+    }
+
+    .scoreBoard-text {
+        font-size: 1.3rem;
+    }
+
+    .score span {
+        font-size: 22px;
+    }
+
+    .reset-confirm {
+        width: 65%;
+    }
+
+    .text-reset {
+        font-size: 14px;
+        padding: 17px;
+    }
+
+    .confirm-btn,
+    .cancel-btn {
+        font-size: 15px;
+        padding: 8px 12px 7px 12px;
+    }
+
+    .cross i {
+        padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    }
+
+    .reset-confirm h2 {
+        font-size: 1.2rem;
+    }
+
+    .rule-img img {
+        width: 90%;
+    }
+
+    .forIdentity {
+        gap: 1.8rem;
+    }
+
+    .forIdentity:first-child,
+    .forIdentity:last-child {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 445px) {
+
+    .userChoice,
+    .compChoice,
+    .user,
+    .comp {
+        width: 80px;
+        height: 80px;
+    }
+
+    #resultText {
+        font-size: 1.5rem;
+    }
+
+    .playAgain-btn {
+        padding: 0.2rem 0.8rem 0.2rem 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .result-container {
+        gap: 1rem;
+    }
+
+    .scoreBoard {
+        width: 88%;
+        padding: 0.8rem;
+    }
+
+    .score {
+        width: 90px;
+    }
+
+    .scoreBoard-text {
+        font-size: 1rem;
+    }
+
+    .score span {
+        font-size: 17px;
+    }
+
+    .score h1 {
+        font-size: 45px;
+    }
+
+    .scoreBoard-score {
+        gap: 1rem;
+    }
+
+    .rules {
+        padding: 0.8rem 1.7rem 0.8rem 1.7rem;
+        font-size: 1rem;
+    }
+
+    .reset-confirm {
+        width: 90%;
+    }
+
+    .text-reset {
+        font-size: 14px;
+        padding: 17px;
+    }
+
+    .confirm-btn,
+    .cancel-btn {
+        font-size: 15px;
+        padding: 8px 12px 7px 12px;
+    }
+
+    .cross i {
+        padding: 0.3rem;
+        height: 33px;
+    }
+
+    .cross i svg {
+        width: 15px;
+        height: 15px;
+    }
+
+    .reset-confirm h2 {
+        font-size: 1.2rem;
+    }
+
+    .game-container {
+        margin-left: 2.6rem;
+    }
+
+    .forIdentity {
+        gap: 1.5rem;
+    }
+
+    .forIdentity:first-child,
+    .forIdentity:last-child {
+        font-size: 1rem;
+    }
+
+    #result-paper {
+        border: 0.67rem solid blueviolet;
+    }
+
+    #result-scissors {
+        border: 0.67rem solid yellow;
+    }
+
+    #result-rock {
+        border: 0.67rem solid crimson;
+    }
+}
+
+@media (max-width: 337px) {
+    .score {
+        width: 79px;
+    }
+
+    .score span {
+        font-size: 15px;
+    }
+
+    .score h1 {
+        font-size: 38px;
+    }
+}
